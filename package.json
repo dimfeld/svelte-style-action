@@ -1,7 +1,6 @@
 {
   "name": "svelte-style-action",
-  "version": "0.0.1",
-  "svelte": "src/index.js",
+  "version": "0.0.2",
   "module": "dist/index.mjs",
   "main": "dist/index.js",
   "scripts": {
