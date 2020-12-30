@@ -62,4 +62,46 @@ test('sets cssText when a string is given', () => {
   assert.equal(node.style.cssText, 'color: green');
 });
 
+test('does nothing with an empty string', () => {
+  let node = newNode();
+  node.style.cssText = 'test text';
+
+  let { update } = style(node, '');
+  assert.equal(node.style.cssText, 'test text');
+
+  update('');
+  assert.equal(
+    node.style.cssText,
+    'test text',
+    'Update with empty string does not set the text'
+  );
+
+  update('color: red');
+  assert.equal(node.style.cssText, 'color: red', 'Use an updated value');
+
+  update('');
+  assert.equal(
+    node.style.cssText,
+    '',
+    'Returning to an empty string clears cssText'
+  );
+});
+
+test('handles "undefined"', () => {
+  let node = newNode({ color: 'green', height: '100px' });
+  let { update } = style(node, undefined);
+  compare(node, { color: 'green', height: '100px' });
+
+  update({ color: 'red', width: '10px', '--aVar': 'blue' });
+  compare(node, {
+    color: 'red',
+    height: '100px',
+    width: '10px',
+    '--aVar': 'blue',
+  });
+
+  update(undefined);
+  compare(node, { height: '100px' });
+});
+
 test.run();
