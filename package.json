@@ -4,6 +4,15 @@
   "module": "dist/index.mjs",
   "main": "dist/index.js",
   "license": "MIT",
+  "author": "Daniel Imfeld <dimfeld>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dimfeld/svelte-style-action.git"
+  },
+  "homepage": "https://github.com/dimfeld/svelte-style-action#readme",
+  "bugs": {
+    "url": "https://github.com/dimfeld/svelte-style-action/issues"
+  },
   "scripts": {
     "build": "rollup -c",
     "prepublishOnly": "npm run build",
